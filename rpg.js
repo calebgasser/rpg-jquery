@@ -31,10 +31,14 @@
 			}
 		},
 		init: function(){
-			this.characterList.push(this.createCharacter(10,10,10,10,"Aragorn"));
-			this.characterList.push(this.createCharacter(10,10,10,10,"Gimly"));
-			this.characterList.push(this.createCharacter(10,10,10,10,"Gandalf"));
-			this.characterList.push(this.createCharacter(10,10,10,10,"Legolas"));
+			this.characterList.push(this.createCharacter(8,8,8,8,"Aragorn",
+				"http://www.councilofelrond.com/albums/album50/C_Aragorn_02.jpg"));
+			this.characterList.push(this.createCharacter(10,6,10,6,"Gimli",
+				"http://www.councilofelrond.com/wp-content/uploads/modules/My_eGallery/gallery/characters/gimli/Figwit12523_18.jpg"));
+			this.characterList.push(this.createCharacter(4,10,10,10,"Gandalf",
+				"http://images6.fanpop.com/image/photos/35100000/Gandalf-the-Grey-Fellowship-of-the-Ring-gandalf-35160265-500-211.jpg"));
+			this.characterList.push(this.createCharacter(6,10,6,10,"Legolas",
+				"http://www.eryn-carantaur.com/legolas_grief2.jpg"));
 		}
 	}
 
@@ -62,7 +66,13 @@
 		},
 		updateCharacterPanel: function(charId){
 			var currentChar = characters.characterByName(charId);
+
 			$("#characterCardName").html(currentChar.name);
+			$("#characterCardCons").html("Constitution: " + currentChar.constitution);
+			$("#characterCardDex").html("Dexterity: " + currentChar.dexterity);
+			$("#characterCardStr").html("Strength: " + currentChar.strength);
+			$("#characterCardInt").html("Intelligence: " + currentChar.intelligence);
+			$("#characterCardImg").attr('src', currentChar.image);
 		},
 		init: function(){
 			uiManager.update();
@@ -79,7 +89,6 @@
 
 		//Catch character selection.
 		$(".characterSelector").on('click', function(){
-			console.log(this.id);
 			uiManager.updateCharacterPanel(this.id);
 		})
 		//For smoke testing, remove once finished.
