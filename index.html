@@ -9,6 +9,8 @@
 			<!-- Twitter Bootstrap-->
 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 			<!-- Google Fonts-->
+			<!-- Animate CSS -->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 			<!-- Font Awesome-->
 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<!-- My own css-->
@@ -28,29 +30,93 @@
 	<title>RPG Game</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<div clas="row">
-			<!-- Stat Panel -->
-				<div class="col-4">
-					<div class="card text-center">
-						<div class="card-header">Aragorn</div>
-						<div class="card-block">
-							<img class="card-img-top img-fluid" src="http://www.councilofelrond.com/albums/album50/C_Aragorn_02.jpg" alt="character">
-							<div class="card-body">
-								<ul class="list-group">
-									<li class="list-group-item">Constitution: </li>
-									<li class="list-group-item">Dexterity: </li>
-									<li class="list-group-item">Strength: </li>
-									<li class="list-group-item">Intelligence: </li>
-								</ul>
+	<div>
+		
+	</div>
+	<div class="container">
+		<!-- Rules -->
+		<div class="row">
+			<div class="col-3">
+				<div class="row">
+					<div class='col-12'>
+						<!-- Character Select -->
+							<div class="card card-warning text-center heightMax">
+								<div clas="card-block">
+									<div class="card-header">
+										Character Select
+									</div>
+									<div class="card-body">
+										<div id="characterList" class="list-group">
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
+						<!-- /Character Select -->
 					</div>
 				</div>
-			<!-- /Stat Panel -->
-		</div>
-		<div class="row">
-			
+				<div class="row">
+					<div class='col-12'>
+						<!-- Combat Log -->
+							<div class="card card-info text-center heightMax">
+								<div clas="card-block">
+									<div class="card-header">
+										Combat log
+									</div>
+								</div>
+							</div>
+						<!-- /Combat Log -->
+					</div>
+				</div>
+			</div>
+			<div class="col-9">
+				<!-- Good Guy Row -->
+				<div class="row">
+					<!-- Stat Panel -->
+						<div class="col-6">
+							<div class="card card-success text-center">
+								<div class="card-header">Aragorn</div>
+								<div class="card-block">
+									<div class="card-title">Stats</div>
+									<img class="card-img-top img-fluid" src="http://www.councilofelrond.com/albums/album50/C_Aragorn_02.jpg" alt="character">
+									<div class="card-body">
+										<ul class="list-group">
+											<li class="list-group-item">Constitution: </li>
+											<li class="list-group-item">Dexterity: </li>
+											<li class="list-group-item">Strength: </li>
+											<li class="list-group-item">Intelligence: </li>
+										</ul>
+										<span class="btn btn-primary">Cleave</span>
+										<span class="btn btn-primary">Jumping Slash</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!-- /Stat Panel -->
+				</div>
+				<hr/>
+				<!-- Bad Guy Row -->
+				<div class="row">
+					<!-- Stat Panel -->
+						<div class="col-6">
+							<div class="card card-danger text-center">
+								<div class="card-header">Lurtz</div>
+								<div class="card-block">
+									<div class="card-title">Stats</div>
+									<img class="card-img-top img-fluid" src="https://c2.staticflickr.com/2/1121/968046475_75337e507d_z.jpg?zz=1" alt="character">
+									<div class="card-body">
+										<ul class="list-group">
+											<li class="list-group-item">Constitution: </li>
+											<li class="list-group-item">Dexterity: </li>
+											<li class="list-group-item">Strength: </li>
+											<li class="list-group-item">Intelligence: </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!-- /Stat Panel -->
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
