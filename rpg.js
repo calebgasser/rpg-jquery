@@ -34,6 +34,7 @@
 	//All possible characters to choose from and their stats.
 	var characters = {
 		characterList: [],
+		enemiesList: [],
 		characterByName: function(name){
 			for(char in characters.characterList){
 				if(characters.characterList[char].name === name){
@@ -47,6 +48,15 @@
 				dexterity: dex,
 				strength: str,
 				intelligence: int,
+				name: na,
+				image: imgURL,
+				video: vidURL,
+				health: (con * 2)
+
+			}
+		},
+		createEnemy: function(){
+			return {
 				name: na,
 				image: imgURL,
 				video: vidURL
@@ -75,7 +85,14 @@
 
 	//Manages all things in the game loop.
 	var gameManager = {
+		combatLog: [],
+		populaterCombatLog: function(defaultLength){
+			for(var i = 0; i < defaultLength; i++){
+				gameManager.combatLog[i] = "<p>...</p><br>";
+			}
+		},
 		init: function(){
+			gameManager.populaterCombatLog(9);
 			audioManager.init();
 			videoManager.init();
 			characters.init();
@@ -100,6 +117,7 @@
 			var currentChar = characters.characterByName(charId);
 
 			$("#characterCardName").html(currentChar.name);
+			$("#characterCardHP").html("HP: " + currentChar.health);
 			$("#characterCardCons").html("Constitution: " + currentChar.constitution);
 			$("#characterCardDex").html("Dexterity: " + currentChar.dexterity);
 			$("#characterCardStr").html("Strength: " + currentChar.strength);
@@ -107,11 +125,17 @@
 			$("#characterCardImg").attr('src', currentChar.image).hide();
 			videoManager.playClip(currentChar.video);
 		},
+		updateCombatLog: function(){
+			for(log in gameManager.combatLog){
+				$("#combatLog").append(gameManager.combatLog[log]);
+			}
+		},
 		init: function(){
 			uiManager.update();
 		},
 		update: function(){
 			uiManager.updateCharacterSelect();
+			uiManager.updateCombatLog();
 		}
 	}
 
