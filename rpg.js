@@ -16,6 +16,7 @@
 		}
 	}
 
+	//Used for loading and managing videos.
 	var videoManager = {
 		videoPlayer: {},
 		playClip: function(url){
