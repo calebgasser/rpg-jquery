@@ -14,13 +14,13 @@
 		playClip: function(url){
 			audioManager.theCouncil.pause();
 			videoManager.videoPlayer.show();
-			console.log(videoManager.videoPlayer);
 			videoManager.videoPlayer.attr('src',url);
 			videoManager.videoPlayer[0].load();
 			videoManager.videoPlayer[0].play();
 			videoManager.videoPlayer.on('ended', function(){
 				$(this).hide();
 				audioManager.theCouncil.play();
+				$("#characterCardImg").show();
 			})
 		},
 		update: function(){
@@ -104,7 +104,7 @@
 			$("#characterCardDex").html("Dexterity: " + currentChar.dexterity);
 			$("#characterCardStr").html("Strength: " + currentChar.strength);
 			$("#characterCardInt").html("Intelligence: " + currentChar.intelligence);
-			$("#characterCardImg").attr('src', currentChar.image);
+			$("#characterCardImg").attr('src', currentChar.image).hide();
 			videoManager.playClip(currentChar.video);
 		},
 		init: function(){
