@@ -9,6 +9,28 @@
 		}
 	}
 
+	var videoManager = {
+		videoPlayer: {},
+		playClip: function(url){
+			audioManager.theCouncil.pause();
+			videoManager.videoPlayer.show();
+			console.log(videoManager.videoPlayer);
+			videoManager.videoPlayer.attr('src',url);
+			videoManager.videoPlayer[0].load();
+			videoManager.videoPlayer[0].play();
+			videoManager.videoPlayer.on('ended', function(){
+				$(this).hide();
+				audioManager.theCouncil.play();
+			})
+		},
+		update: function(){
+
+		},
+		init: function(){
+			videoManager.videoPlayer = $("#characterCardVid");
+		}
+	}
+
 	//All possible characters to choose from and their stats.
 	var characters = {
 		characterList: [],
@@ -19,7 +41,7 @@
 				}
 			}
 		},
-		createCharacter: function(con, dex, str, int, na, imgURL){
+		createCharacter: function(con, dex, str, int, na, imgURL, vidURL){
 			return {
 				constitution: con,
 				dexterity: dex,
@@ -27,18 +49,27 @@
 				intelligence: int,
 				name: na,
 				image: imgURL,
+				video: vidURL
 
 			}
 		},
 		init: function(){
+			//Aragorn
 			this.characterList.push(this.createCharacter(8,8,8,8,"Aragorn",
-				"http://www.councilofelrond.com/albums/album50/C_Aragorn_02.jpg"));
+				"http://www.councilofelrond.com/albums/album50/C_Aragorn_02.jpg",
+				"./assets/video/Aragorn.mp4"));
+			//Gimli
 			this.characterList.push(this.createCharacter(10,6,10,6,"Gimli",
-				"http://www.councilofelrond.com/wp-content/uploads/modules/My_eGallery/gallery/characters/gimli/Figwit12523_18.jpg"));
+				"http://www.councilofelrond.com/wp-content/uploads/modules/My_eGallery/gallery/characters/gimli/Figwit12523_18.jpg",
+				"./assets/video/Gimli.mp4"));
+			//Gandalf
 			this.characterList.push(this.createCharacter(4,10,10,10,"Gandalf",
-				"http://images6.fanpop.com/image/photos/35100000/Gandalf-the-Grey-Fellowship-of-the-Ring-gandalf-35160265-500-211.jpg"));
+				"http://images6.fanpop.com/image/photos/35100000/Gandalf-the-Grey-Fellowship-of-the-Ring-gandalf-35160265-500-211.jpg",
+				"./assets/video/Gandalf.mp4"));
+			//Legolas
 			this.characterList.push(this.createCharacter(6,10,6,10,"Legolas",
-				"http://www.eryn-carantaur.com/legolas_grief2.jpg"));
+				"http://www.eryn-carantaur.com/legolas_grief2.jpg",
+				"./assets/video/Legolas.mp4"));
 		}
 	}
 
@@ -46,6 +77,7 @@
 	var gameManager = {
 		init: function(){
 			audioManager.init();
+			videoManager.init();
 			characters.init();
 			uiManager.init();
 		}
@@ -73,6 +105,7 @@
 			$("#characterCardStr").html("Strength: " + currentChar.strength);
 			$("#characterCardInt").html("Intelligence: " + currentChar.intelligence);
 			$("#characterCardImg").attr('src', currentChar.image);
+			videoManager.playClip(currentChar.video);
 		},
 		init: function(){
 			uiManager.update();

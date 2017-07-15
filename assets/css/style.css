@@ -2,3 +2,8 @@ body{
 
 	background-image: url("http://longwallpapers.com/Desktop-Wallpaper/lord-of-the-rings-landscape-wallpapers-phone-For-Desktop-Wallpaper.jpg");
 }
+
+video {
+    max-width: 100%;
+    height: auto;
+}
