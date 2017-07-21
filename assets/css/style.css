@@ -1,10 +1,14 @@
 body{
 	font-family: 'Quicksand', sans-serif;
+	background-size: 100%;
 	background-image: url("http://longwallpapers.com/Desktop-Wallpaper/lord-of-the-rings-landscape-wallpapers-phone-For-Desktop-Wallpaper.jpg");
 }
 .card-header{
 	font-size: 25px;
 	font-family: 'Pacifico', cursive;
+}
+.card{
+	height: 100%;
 }
 
 video {

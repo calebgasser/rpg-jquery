@@ -48,7 +48,7 @@
 									<div class="card-body">
 										<div id="characterList" class="list-group">
 										</div>
-										<button class="btn btn-primary">Fight?</button>
+										<button id="fight" class="btn btn-primary">Fight!</button>
 									</div>
 								</div>
 							</div>
@@ -87,14 +87,18 @@
 									</div>
 									<div class="card-body">
 										<ul class="list-group">
-											<li id="characterCardHP" class="list-group-item list-group-item-danger">HP: 0</li>
+											<li id="characterCardHP" class="list-group-item">HP: 0</li>
 											<li id="characterCardCons" class="list-group-item">Constitution: 0</li>
-											<li id="characterCardDex" class="list-group-item">Dexterity: 0</li>
-											<li id="characterCardStr" class="list-group-item">Strength: 0</li>
-											<li id="characterCardInt" class="list-group-item">Intelligence: 0</li>
+											<li id="characterCardDex" class="list-group-item
+											list-group-item-info">Dexterity: 0</li>
+											<li id="characterCardStr" class="list-group-item
+											list-group-item-danger">Strength: 0</li>
+											<li id="characterCardInt" class="list-group-item
+											list-group-item-warning">Intelligence: 0</li>
 										</ul>
-										<span class="btn btn-primary">Cleave</span>
-										<span class="btn btn-primary">Jumping Slash</span>
+										<span id="attackStr" class="btn btn-danger">Strength Attack</span>
+										<span id="attackDex" class="btn btn-info">Dexterity Attack</span>
+										<span id="attackInt" class="btn btn-warning">Intelligence Attack</span>
 									</div>
 								</div>
 							</div>
@@ -105,7 +109,7 @@
 								<div id="enemyCardName" class="card-header">Enemy</div>
 								<div class="card-block">
 									<div class="card-title">Stats</div>
-									<img id="enemyCardImg" class="card-img-top img-fluid" src="" alt="character">
+									<img id="enemyCardImg" class="card-img-top img-fluid" src="" alt="Press fight button to start.">
 									<div class="card-body">
 										<ul class="list-group">
 											<li id="enemyCardHP" class="list-group-item">HP: ---</li>
@@ -118,14 +122,6 @@
 
 				</div>
 				<hr/>
-				<!-- Bad Guy Row -->
-				<div class="row">
-					<!-- /Stat Panel -->
-						<div class="col-12">
-							
-						</div>
-					<!-- /Stat Panel -->
-				</div>
 			</div>
 		</div>
 	</div>
