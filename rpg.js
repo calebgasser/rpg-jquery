@@ -14,26 +14,51 @@
 		backgroundMusic: new Audio('./assets/audio/10-the-council-of-elrond.mp3'),
 		winMusic: new Audio('./assets/audio/winmusic.mp3'),
 		lossMusic: new Audio('./assets/audio/18-may-it-be.mp3'),
+		battleMusic: new Audio('./assets/audio/03-the-riders-of-rohan.mp3'),
+		isPlaying: false,
 		init: function(){
 			this.allAudio.push(this.backgroundMusic);
 			this.allAudio.push(this.winMusic);
 			this.allAudio.push(this.lossMusic);
+			this.allAudio.push(this.battleMusic);
 			this.backgroundMusic.play();
 		},
 		playWinMusic: function(){
-			this.pauseAll();
-			this.winMusic.currentTime = 0;
-			this.winMusic.play();
+			if(!this.isPlaying){
+				this.pauseAll();
+				this.winMusic.currentTime = 0;
+				this.winMusic.play();
+				this.isPlaying = true;
+			}
 		},
 		playLossMusic: function(){
-			this.pauseAll();
-			this.lossMusic.currentTime = 0;
-			this.lossMusic.play();
+			if(!this.isPlaying){
+				this.pauseAll();
+				this.lossMusic.currentTime = 0;
+				this.lossMusic.play();
+				this.isPlaying = true;
+			}
+		},
+		playBattleMusic: function(){
+			if(!this.isPlaying){
+				this.pauseAll();
+				this.battleMusic.currentTime = 0;
+				this.battleMusic.play();
+				this.isPlaying = true;
+			}
+		},
+		playBackgroundMusic: function(){
+			if(!this.isPlaying){
+				this.pauseAll();
+				this.backgroundMusic.play();
+				this.isPlaying = true;
+			}
 		},
 		pauseAll: function(){
 			for(audio in this.allAudio){
 				this.allAudio[audio].pause();
 			}
+			this.isPlaying = false;
 		}
 	}
 
@@ -42,14 +67,14 @@
 		videoPlayer: {},
 		//Used to pause background music, play video clip, and resume music.
 		playVideoClip: function(url){
-			audioManager.backgroundMusic.pause();
+			audioManager.pauseAll();
 			this.videoPlayer.show();
 			this.videoPlayer.attr('src',url);
 			this.videoPlayer[0].load();
 			this.videoPlayer[0].play();
 			this.videoPlayer.on('ended', function(){
 				$(this).hide();
-				audioManager.backgroundMusic.play();
+				audioManager.playBackgroundMusic();
 				$("#characterCardImg").show();
 			})
 		},
@@ -398,6 +423,7 @@ $(function(){
 			gameManager.isPlaying = true;
 			characters.chooseRandomEnemy();
 			uiManager.updateEnemyPanel();
+			audioManager.playBattleMusic();
 		}
 	});
 	//Dexterity based attack handler
