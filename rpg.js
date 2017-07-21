@@ -190,12 +190,12 @@
 		//Update the combat log html with the contents of combatLog
 		populateCombatLog: function(defaultLength){
 			for(var i = 0; i < defaultLength; i++){
-				gameManager.combatLog[i] = "...";
+				gameManager.combatLog[i] = "-->";
 			}
 		},
 		//Adds a string to the combat log and udpates the html.
 		addToLog: function(log){
-			this.combatLog.push(log);
+			this.combatLog.push("-->" + log);
 			this.combatLog.shift();
 			uiManager.updateCombatLog();
 		},
@@ -262,6 +262,7 @@
 		},
 		displayWin: function(){
 			$(".container").empty();
+			$("canvas").hide();
 			$(".container").css('color','white');
 			$(".container").append("<div class='row text-center'>"+
 				"<h1 class='col-12'>You Won!</h1></div>");
@@ -270,6 +271,7 @@
 		},
 		displayLoss: function(){
 			$(".container").empty();
+			$("canvas").hide();
 			$(".container").css('color','white');
 			$(".container").append("<div class='row text-center'>"+
 				"<h1 class='col-12'>You Lost :(</h1></div>");
@@ -292,21 +294,28 @@
 	var background = {
 		canvas: {},
 		ctx: {},
-		star: [],
+		leaves: [],
 		particles: [],
 		numOfParticles: 100,
-		particleMaxLive: 200,
-		particleMinLive: 100,
+		particleMaxLive: 800,
+		particleMinLive: 400,
 
 		init: function(){
 			background.canvas = document.getElementById('backgroundCanvas');
 			background.ctx = background.canvas.getContext('2d');
-			background.leaves = new Image();
+			background.leaves[0] = new Image();
+			background.leaves[0].src = './assets/images/leaves_autum.png';
 		},
 		update: function(){
 			background.particalUpdate();
 			background.particalPopulate();
 			background.particaleDraw();
+		},
+		startSimulated: function(amount){
+			for(var i = 0; i < amount; i++){
+				background.particalUpdate();
+				background.particalPopulate();
+			}
 		},
 		createParticle: function(x,y,life){
 			return {
@@ -316,13 +325,14 @@
 				animReset: life/10,
 				anim: life/10,
 				currentFrame: 0,
-				frames: [background.star[0],background.star[1]]
+				frames: [background.leaves[0]]
 			}
 		},
 		particalUpdate: function(){
 			for(var i = 0; i < background.particles.length; i++){
 				background.particles[i].lifeTime -= 1;
 				background.particles[i].anim -= 1;
+				background.particles[i].posY += 1;
 				if(background.particles[i].anim <= 0){
 					if(background.particles[i].currentFrame >= background.particles[i].frames.length-1){
 						background.particles[i].currentFrame = 0;
@@ -361,12 +371,17 @@
 			}
 		},
 		getRandomPosition: function(){
-			return [getRandomIntInclusive(0,background.canvas.width),getRandomIntInclusive(0,background.canvas.height)];
+			return [getRandomIntInclusive(0,background.canvas.width)-50,-100];
 		}
 	}
 
 //jQuery on ready.
 $(function(){
+
+	//Init background.
+	background.init();
+	background.startSimulated(1000);
+	setInterval(background.update,1000/30);
 	// All game initilization done here.
 	gameManager.init();
 
