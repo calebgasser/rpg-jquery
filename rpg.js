@@ -24,32 +24,32 @@
 			this.backgroundMusic.play();
 		},
 		playWinMusic: function(){
+			this.pauseAll();
 			if(!this.isPlaying){
-				this.pauseAll();
 				this.winMusic.currentTime = 0;
 				this.winMusic.play();
 				this.isPlaying = true;
 			}
 		},
 		playLossMusic: function(){
+			this.pauseAll();
 			if(!this.isPlaying){
-				this.pauseAll();
 				this.lossMusic.currentTime = 0;
 				this.lossMusic.play();
 				this.isPlaying = true;
 			}
 		},
 		playBattleMusic: function(){
+			this.pauseAll();
 			if(!this.isPlaying){
-				this.pauseAll();
 				this.battleMusic.currentTime = 0;
 				this.battleMusic.play();
 				this.isPlaying = true;
 			}
 		},
 		playBackgroundMusic: function(){
+			this.pauseAll();
 			if(!this.isPlaying){
-				this.pauseAll();
 				this.backgroundMusic.play();
 				this.isPlaying = true;
 			}
