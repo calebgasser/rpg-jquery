@@ -195,7 +195,7 @@
 				"https://vignette1.wikia.nocookie.net/villains/images/d/de/Lurtz_8.png/revision/latest?cb=20141104180627",
 				"");
 			//Salron
-			this.createEnemy(100, 10, "Salron",
+			this.createEnemy(100, 10, "Sauron",
 				"https://vignette1.wikia.nocookie.net/lotr/images/3/3a/Sauron.jpg/revision/latest?cb=20120620000759",
 				"");
 		},
