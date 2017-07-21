@@ -296,9 +296,9 @@
 		ctx: {},
 		leaves: [],
 		particles: [],
-		numOfParticles: 100,
-		particleMaxLive: 800,
-		particleMinLive: 400,
+		numOfParticles: 10,
+		particleMaxLive: 6000,
+		particleMinLive: 3000,
 
 		init: function(){
 			background.canvas = document.getElementById('backgroundCanvas');
@@ -366,12 +366,12 @@
 					background.particles[i].frames[background.particles[i].currentFrame],
 					background.particles[i].posX,
 					background.particles[i].posY,
-					64,
-					64)
+					1024,
+					1036)
 			}
 		},
 		getRandomPosition: function(){
-			return [getRandomIntInclusive(0,background.canvas.width)-50,-100];
+			return [getRandomIntInclusive(0,background.canvas.width)-500,-1036];
 		}
 	}
 
@@ -380,8 +380,8 @@ $(function(){
 
 	//Init background.
 	background.init();
-	background.startSimulated(1000);
-	setInterval(background.update,1000/30);
+	background.startSimulated(5000);
+	setInterval(background.update,1000/60);
 	// All game initilization done here.
 	gameManager.init();
 
